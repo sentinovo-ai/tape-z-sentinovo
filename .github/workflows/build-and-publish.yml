@@ -37,6 +37,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GitHub Packages
-        run: mvn -B deploy -DskipTests
+        run: |
+          mvn -B deploy -DskipTests \
+            -DdeployAtEnd=true \
+            -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/sentinovo-ai/tape-z
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
