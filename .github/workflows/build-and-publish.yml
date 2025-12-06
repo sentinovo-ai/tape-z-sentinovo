@@ -39,6 +39,7 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           mvn -B deploy -DskipTests \
+            -pl '!woof,!mojo-common' \
             -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/sentinovo-ai/tape-z-sentinovo
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
